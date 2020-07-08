@@ -1,7 +1,6 @@
     /*-------------------------------LES VARIABLES---------------------------------------------------------*/
 
     var socket = io.connect('http://localhost:8080');
-    var soquet = io.connect('http://localhost:8080/master');
     var qua = document.getElementById("quatre");
     var tro = document.getElementById("troise");
     var deu = document.getElementById("deuxes");
@@ -426,7 +425,7 @@ $(document).on("keypress", function(event) {
 
 
 });
-
+/*
 function maj_noms(){
     console.log("Ok");
     eq_d = "D"+document.getElementById("nom_droite").innerHTML;
@@ -436,6 +435,14 @@ function maj_noms(){
     soquet.emit("mastere", "Deq_d");
     soquet.emit("mastere", "Geq_g");    
 }
+*/
+    socket.on("nomDroite", function (message) {
+        document.getElementById("nom_droite").innerHTML = message;
+    });
+    socket.on("nomGauche", function (message) {
+        document.getElementById("nom_gauche").innerHTML = message;
+
+    });
 
 
 socket.on("gestion", function(action) {

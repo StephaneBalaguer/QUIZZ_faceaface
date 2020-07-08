@@ -30,6 +30,7 @@ app.get('/master', function (req, res) {
 
 
 io.sockets.on('connection', function (socket, pseudo) {
+
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session et on informe les autres personnes
     // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
     socket.on('gauche', function (message) {
@@ -80,6 +81,16 @@ io.sockets.on('connection', function (socket, pseudo) {
         console.log(message);
         clignoterfafshort();
       }
+    });
+
+    socket.on("nomDroite", function (message) {
+      console.log('NomDroite recu : ' + message)
+      socket.broadcast.emit("nomDroite", message);
+    });
+
+    socket.on("nomGauche", function (message) {
+      console.log('NomGauche recu : ' + message);
+      socket.broadcast.emit("nomGauche", message);
     });
 
   });

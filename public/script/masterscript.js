@@ -1,6 +1,5 @@
 	// Connexion à socket.io
 	var socket = io.connect('http://localhost:8080');
-	var soquet = io.connect('http://localhost:8080/master');
         // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
         var pseudo = "ADMIN";
         var nomJ = pseudo;
@@ -16,8 +15,22 @@
         }
 
 function act_noms(){
-	socket.emit("gestion", "act_noms");
+    //retrive names from input text, send it to the server
+    var nomDroite = document.getElementById("nomDroite").value;
+    var nomGauche = document.getElementById("nomGauche").value;
+    console.log('actnom');
+    socket.emit("nomDroite", nomDroite);
+    socket.emit("nomGauche", nomGauche);
+
 }
+
+socket.on('nomDroite', function (message) {
+    document.getElementById("eq_d").innerHTML = message;
+});
+socket.on('nomGauche', function (message) {
+    document.getElementById("eq_g").innerHTML = message;
+
+});
 
 //fonction chronos
 function gochrono() {
@@ -411,7 +424,7 @@ function reinitialiser() {
     }
 }
 
-soquet.on("mastere", function(action) {
+/*soquet.on("mastere", function(action) {
     console.log(action);
     if (action[0] == "D") {
         console.log("maj_nom");
@@ -420,4 +433,4 @@ soquet.on("mastere", function(action) {
        console.log("maj_nom");
        document.getElementById("eq_d").innerHTML = action;
    }
-});
+});*/
