@@ -266,10 +266,12 @@ buzzers.onPress(function(ev) {
   if(ev.button==0){
     console.log("[BUZZER] le buzzer " +ev.controller+ " a buzzé");
     if(ev.controller == 1) {
-      io.sockets.emit("qui", "gauche")
+      io.sockets.emit("qui", "gauche");
+      io.sockets.emit("quo", "gauche");
     }
     if(ev.controller == 4) {
-     io.sockets.emit("qui", "droite")
+     io.sockets.emit("qui", "droite");
+     io.sockets.emit("quo", "droite");
    }
  }
  /*   if(ev.button==4){

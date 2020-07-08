@@ -6,40 +6,161 @@
     <title>Super Socket temps réel !</title>
 </head>
 
+<style>
+        .bg_timere_dispo_4{
+            background: linear-gradient(90deg, rgba(194,115,34,1), rgba(194,115,34,1), rgba(236,163,38,1), rgba(237,220,101,1), rgba(237,220,101,1));
+            border-style: none solid solid solid;
+            border-width: 0 5px 1px 5px;
+        }
+
+        .bg_timere_dispo{
+            background: linear-gradient(90deg, rgba(194,115,34,1), rgba(194,115,34,1), rgba(236,163,38,1), rgba(237,220,101,1), rgba(237,220,101,1));
+            border-style: solid solid solid solid;
+            border-width: 0px 5px 1px 5px;
+        }
+
+        .bg_timere_dispo_1{
+            background: linear-gradient(90deg, rgba(194,115,34,1), rgba(194,115,34,1), rgba(236,163,38,1), rgba(237,220,101,1), rgba(237,220,101,1));
+            border-style: solid solid none solid;
+            border-width: 0px 5px 0 5px;
+        }
+        
+        .bg_timere_epuis_4{
+            background: linear-gradient(90deg, rgba(52,111,215,1), rgba(52,111,215,1), rgba(108,180,243,1), rgba(108,180,243,1), rgba(173,249,237,1));
+            border-style: none solid none solid;
+        }
+
+        .bg_timere_epuis{
+            background: linear-gradient(90deg, rgba(52,111,215,1), rgba(52,111,215,1), rgba(108,180,243,1), rgba(108,180,243,1), rgba(173,249,237,1));
+            border-style: none solid none solid;
+        }
+
+        .bg_timere_epuis_1{
+            background: linear-gradient(90deg, rgba(52,111,215,1), rgba(52,111,215,1), rgba(108,180,243,1), rgba(108,180,243,1), rgba(173,249,237,1));
+            border-style: none solid solid solid;
+        }
+
+        .bg_timere_chiffre_4{
+            border-style: solid solid none solid;
+        }
+
+        .bg_timere_chiffre{
+            border-style: none solid none solid;
+        }
+
+        .bg_timere_chiffre_1{
+            border-style: none solid solid solid;
+        }
+</style>
+
 <body>
 
-    <h1>L'interface moche !</h1>
-    <button id="debloquer" onclick="gauche()">Buzz Gauche !</button>
-    <button id="debloquer" onclick="droite()">Buzz Droite !</button>
+    <h1 style="text-align:center">Interface face à face</h1>
+    <h3 style="text-align:center">Écrans opposés</h3>
+    <br />
+    <table style="text-align:center;margin:auto">    
+    <tr>
+    	<td style="width:10%"><button id="debloquer" onclick="gauche()" style="width:100%">Buzz Gauche !</button></td>
+    	<td style="width:10%"><button id="debloquer" onclick="droite()" style="width:100%">Buzz Droite !</button></td>
+		<td style="width:10%"><button id="debloquer" onclick="act_noms()" style="width:100%">Actualiser les noms</button></td>
+    </tr>
+    <tr>
+    	<td><button onclick="reinit()" style="width:100%">&nbsp;Réinitialiser&nbsp;</button></td>
+    	<td><button onclick="gochrono()" style="width:100%">&nbsp;Lancer le chrono&nbsp;</button></td>
+    	<td><button onclick="restartchrono()" style="width:100%">&nbsp;Relancer le chrono&nbsp;</button></td>
+    </tr>
+	</table>
 
-    <h1>interface de gestion car ton clavier me soule </h1>
-    <button onclick="gochrono()">&nbsp;Lancer le chrono&nbsp;</button>
-    <button onclick="restartchrono()">&nbsp;Relancer le chrono&nbsp;</button>
-    <button onclick="reinit()">&nbsp;Réinitialiser&nbsp;</button>
-    <br /> <br /><table style="text-align:center;">
+	<table style="text-align:center; width:100%">   
+	<tr><th id="eq_g">GAUCHE</th><th id="eq_d">DROITE</th></tr>
 
-        <tr><th>GAUCHE</th><th>DROITE</th></tr>
+	<tr><td><button onclick="maingauche()">&nbsp;Prendre la main&nbsp;</button></td><td><button onclick="maindroite()">&nbsp;Prendre la main&nbsp;</button></td></tr>
+	<tr></tr>
+	<tr><th>SCORES</th><th>SCORES</th></tr>
 
-        <tr><td><button onclick="maingauche()">&nbsp;Prendre la main&nbsp;</button></td><td><button onclick="maindroite()">&nbsp;Prendre la main&nbsp;</button></td></tr>
-        <tr><td colspan="2">LES SCORES</td></tr>
-        <tr></tr>
-        <tr><td><button onclick="gauche1()">&nbsp;+1&nbsp;</button></td><td><button onclick="droite1()">&nbsp;+1&nbsp;</button></td></tr>
-        <tr><td><button onclick="gauche2()">&nbsp;+2&nbsp;</button></td><td><button onclick="droite2()">&nbsp;+2&nbsp;</button></td></tr> 
-        <tr><td><button onclick="gauche3()">&nbsp;+3&nbsp;</button></td><td><button onclick="droite3()">&nbsp;+3&nbsp;</button></td></tr> 
-        <tr><td><button onclick="gauche4()">&nbsp;+4&nbsp;</button></td><td><button onclick="droite4()">&nbsp;+4&nbsp;</button></td></tr>
-        <tr></tr>
-        <tr><td colspan="2">LE TIMER</td></tr>
-        <tr><td><button onclick="timer1g()">&nbsp;1&nbsp;</button></td><td><button onclick="timer1d()">&nbsp;1&nbsp;</button></td></tr>
-        <tr><td><button onclick="timer2g()">&nbsp;2&nbsp;</button></td><td><button onclick="timer2d()">&nbsp;2&nbsp;</button></td></tr> 
-        <tr><td><button onclick="timer3g()">&nbsp;3&nbsp;</button></td><td><button onclick="timer3d()">&nbsp;3&nbsp;</button></td></tr> 
-        <tr><td><button onclick="timer4g()">&nbsp;4&nbsp;</button></td><td><button onclick="timer4d()">&nbsp;4&nbsp;</button></td></tr>
-        <tr><td colspan="2">POUET</td></tr>
-        <tr><td><button onclick="allumerg()">&nbsp;Allumer&nbsp;</button></td><td><button onclick="allumerd()">&nbsp;Allumer&nbsp;</button></td></tr>
-        <tr><td><button onclick="eteindreg()">&nbsp;Eteindre&nbsp;</button></td><td><button onclick="eteindred()">&nbsp;Eteindre&nbsp;</button></td></tr> 
-        <tr><td><button onclick="clignoterg()">&nbsp;Clignoter&nbsp;</button></td><td><button onclick="clignoterd()">&nbsp;Clignoter&nbsp;</button></td></tr> 
-        <tr><td colspan="2"><button onclick="clignoter()">&nbsp;Clignoter&nbsp;</button></td>
-        </table>
+	<tr><td><button onclick="points()">&nbsp;Points&nbsp;</button></td><td><button onclick="points()">&nbsp;Points&nbsp;</button></td></tr>
+	<tr><td><button onclick="gauche1()">&nbsp;+1&nbsp;</button></td><td><button onclick="droite1()">&nbsp;+1&nbsp;</button></td></tr>
+	<tr><td><button onclick="gauche2()">&nbsp;+2&nbsp;</button></td><td><button onclick="droite2()">&nbsp;+2&nbsp;</button></td></tr> 
+	<tr><td><button onclick="gauche3()">&nbsp;+3&nbsp;</button></td><td><button onclick="droite3()">&nbsp;+3&nbsp;</button></td></tr> 
+	<tr><td><button onclick="gauche4()">&nbsp;+4&nbsp;</button></td><td><button onclick="droite4()">&nbsp;+4&nbsp;</button></td></tr>
+	<tr></tr>
 
+	<tr><th>TIMER</th><th>TIMER</th></tr>
+	<tr><td><button onclick="timer1d()">&nbsp;1&nbsp;</button></td><td><button onclick="timer1g()">&nbsp;1&nbsp;</button></td></tr>
+	<tr><td><button onclick="timer2d()">&nbsp;2&nbsp;</button></td><td><button onclick="timer2g()">&nbsp;2&nbsp;</button></td></tr> 
+	<tr><td><button onclick="timer3d()">&nbsp;3&nbsp;</button></td><td><button onclick="timer3g()">&nbsp;3&nbsp;</button></td></tr> 
+	<tr><td><button onclick="timer4d()">&nbsp;4&nbsp;</button></td><td><button onclick="timer4g()">&nbsp;4&nbsp;</button></td></tr>
+	
+	<tr><th>POUET</th><th>POUET</th></tr>
+	<tr><td><button onclick="allumerg()">&nbsp;Allumer&nbsp;</button></td><td><button onclick="allumerd()">&nbsp;Allumer&nbsp;</button></td></tr>
+	<tr><td><button onclick="eteindreg()">&nbsp;Eteindre&nbsp;</button></td><td><button onclick="eteindred()">&nbsp;Eteindre&nbsp;</button></td></tr> 
+	<tr><td><button onclick="clignoterg()">&nbsp;Clignoter&nbsp;</button></td><td><button onclick="clignoterd()">&nbsp;Clignoter&nbsp;</button></td></tr> 
+	<tr><td colspan="2"><button onclick="clignoter()">&nbsp;Clignoter&nbsp;</button></td>
+	<tr><td colspan="2">Cache</td></tr>
+	<tr><td><button onclick="affiche_timer()">&nbsp;Afficher le timer&nbsp;</button></td><td><button onclick="cache_timer()">&nbsp;Cacher le timer&nbsp;</button></td></tr>
+	</table>
+
+	<table style="text-align:center; width:100%">
+	<tr >
+		<td style="text-align:center; width:25%">Log</td>
+		<td style="text-align:center; width:25%" id="log">0</td>
+		<td style="text-align:center; width:25%">Timer</td>
+		<td style="text-align:center; width:25%" id="log_timer">0</td>
+	</tr>   
+	<tr>
+		<td>Qui a la main :</td>
+		<td><div id="qui_a_la_main">0</div></td>
+		<td>-</td>
+		<td>-</td>
+	</tr>
+	<tr>
+		<td>Buzzer Gauche</td>
+		<td><div id="buzzer_g"> 1 </div></td>
+		<td>Buzzer Droit</td>
+		<td><div id="buzzer_d"> 1 </div></td>
+	</tr> 
+	<tr>
+		<td>Main 4pts</td>
+		<td><div id="m_quatre"> 0 </div></td>
+		<td>Main 3pts</td>
+		<td><div id="m_troise"> 0 </div></td>
+	</tr> 
+	<tr>
+		<td>Main 2pts</td>
+		<td><div id="m_deuxes"> 0 </div></td>
+		<td>Main 1pt</td>
+		<td><div id="m_unesss"> 0 </div></td>
+	</tr>
+	</table>
+
+		<div id="tout_le_log">   
+
+		</div>
+
+
+		<div id="timeres" style="font-family: qpuc_spe;">
+
+			<div id="quatre_bo" style="position:absolute ; top:22%; left:47%;width:6%;height:25%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_epuis_4"></div>
+			<div id="troise_bo" style="position:absolute ; top:47%; left:47%;width:6%;height:21%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_epuis"></div>
+			<div id="deuxes_bo" style="position:absolute ; top:68%; left:47%;width:6%;height:15%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_epuis"></div>
+			<div id="unesss_bo" style="position:absolute ; top:83%; left:47%;width:6%;height:7.5%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_epuis_1"></div>
+
+			<div id="quatre" style="position:absolute ; top:22%; left:47%;width:6%;height:25%; box-sizing: border-box; border-color: white;" class="bg_timere_dispo_4"></div>
+			<div id="troise" style="position:absolute ; top:47%; left:47%;width:6%;height:21%; box-sizing: border-box; border-color: white;" class="bg_timere_dispo"></div>
+			<div id="deuxes" style="position:absolute ; top:68%; left:47%;width:6%;height:15%; box-sizing: border-box; border-color: white;" class="bg_timere_dispo"></div>
+			<div id="unesss" style="position:absolute ; top:83%; left:47%;width:6%;height:7.5%; box-sizing: border-box; border-color: white;" class="bg_timere_dispo_1"></div>
+
+			<div id="quatre_ca" style="position:absolute ; top:22%; left:47%;width:6%;height:25%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_chiffre_4" ></div>
+			<div id="troise_ca" style="position:absolute ; top:47%; left:47%;width:6%;height:21%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_chiffre"></div>
+			<div id="deuxes_ca" style="position:absolute ; top:68%; left:47%;width:6%;height:15%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_chiffre"></div>
+			<div id="unesss_ca" style="position:absolute ; top:83%; left:47%;width:6%;height:7.5%; box-sizing: border-box; border-width: 5px; border-color: white;" class="bg_timere_chiffre_1"></div>
+
+			<div id="quatre_bg" style="position:absolute ; top:22%; left:47%;width:6%;height:25%;color:white; text-align:center; font-size:8vw; margin-top:1%;"> 4 </div>
+			<div id="troise_bg" style="position:absolute ; top:47%; left:47%;width:6%;height:21%;color:white; text-align:center; font-size:6vw; margin-top:1.5%;"> 3 </div>
+			<div id="deuxes_bg" style="position:absolute ; top:68%; left:47%;width:6%;height:15%;color:white; text-align:center; font-size:4vw; margin-top:1%;"> 2 </div>
+			<div id="unesss_bg" style="position:absolute ; top:83%; left:47%;width:6%;height:7.5%;color:white; text-align:center; font-size:2vw; margin-top:0.5%;"> 1 </div>
+
+		</div>
 
 
 
