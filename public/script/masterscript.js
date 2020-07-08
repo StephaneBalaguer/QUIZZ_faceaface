@@ -24,6 +24,14 @@ function act_noms(){
 
 }
 
+function reposDesYeux(){
+    socket.emit("gestion", "repos");
+}
+
+function fatigueDesYeux(){
+    socket.emit("gestion", "fatigue");
+}
+
 socket.on('nomDroite', function (message) {
     document.getElementById("eq_d").innerHTML = message;
 });

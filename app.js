@@ -42,7 +42,7 @@ io.sockets.on('connection', function (socket, pseudo) {
       socket.broadcast.emit('qui', "droite");
     });
     socket.on('gestion', function (message) {
-      console.log(message);
+      console.log("gestion : " + message);
       socket.broadcast.emit("gestion", message);
     });
 

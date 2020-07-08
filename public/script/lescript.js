@@ -47,6 +47,15 @@
     
     /*-------------------------------LES FONCTIONS---------------------------------------------------------*/
 
+function fatigue(){
+    document.body.style.backgroundImage = "url('../media/bg.gif')";
+}
+
+function repos(){
+    document.body.style.backgroundImage = "url('../media/bg2.jpg')";
+}
+
+
     function joue_son() {
         son = document.getElementById("br");
         son.load();
@@ -538,5 +547,9 @@ socket.on("gestion", function(action) {
     document.getElementById("timeres").style.display = "none";
 } else if (action == "act_noms") {
     maj_noms();
+} else if (action == "fatigue") {
+    fatigue();
+} else if (action == "repos") {
+    repos();
 }
 });
