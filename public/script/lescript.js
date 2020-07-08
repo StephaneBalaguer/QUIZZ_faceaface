@@ -446,10 +446,10 @@ function maj_noms(){
 }
 */
     socket.on("nomDroite", function (message) {
-        document.getElementById("nom_droite").innerHTML = message;
+        document.getElementById("nom_gauche").innerHTML = message;
     });
     socket.on("nomGauche", function (message) {
-        document.getElementById("nom_gauche").innerHTML = message;
+        document.getElementById("nom_droite").innerHTML = message;
 
     });
 

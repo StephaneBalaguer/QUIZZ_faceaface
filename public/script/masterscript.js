@@ -25,6 +25,9 @@ function act_noms(){
     console.log('actnom');
     socket.emit("nomDroite", nomDroite);
     socket.emit("nomGauche", nomGauche);
+    document.getElementById("eq_g").innerHTML = nomGauche;
+    document.getElementById("eq_d").innerHTML = nomDroite;
+
 
 }
 
@@ -35,14 +38,6 @@ function reposDesYeux(){
 function fatigueDesYeux(){
     socket.emit("gestion", "fatigue");
 }
-
-socket.on('nomDroite', function (message) {
-    document.getElementById("eq_d").innerHTML = message;
-});
-socket.on('nomGauche', function (message) {
-    document.getElementById("eq_g").innerHTML = message;
-
-});
 
 //fonction chronos
 function gochrono() {
