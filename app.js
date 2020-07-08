@@ -2,7 +2,6 @@ var buzzBuzzers = require('buzz-buzzers');
 const buzzers = buzzBuzzers();
 
 var express = require('express');
-var ent = require('ent'); // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
 var app = express();
 
 var server = require('http').createServer(app);
