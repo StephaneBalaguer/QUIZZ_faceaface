@@ -1,5 +1,17 @@
 	// Connexion à socket.io
-	var socket = io.connect('http://localhost:8080');
+
+
+	var doc = prompt("Serveur Address ? ( empty is local )", "localhost - 192.168.1.44 - thisismyip.com"); 
+	if (doc == null) {
+	doc = "localhost"
+	}
+	var socket = io.connect('http://'+doc+':8080');
+ 
+
+	socket.on( 'error', function() {
+		alert("an error occured, verify given address ! ")
+	});
+	//var socket = io.connect('http://localhost:8080');
         // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
         var pseudo = "ADMIN";
         var nomJ = pseudo;
@@ -14,7 +26,10 @@
         	socket.emit("gestion", "action1");
         }
 
-
+		function verifyconnection() {
+			socket.emit("action", "verifyconnection");
+		}
+		
 
 //fonction chronos
 function gochrono() {

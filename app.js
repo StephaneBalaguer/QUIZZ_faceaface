@@ -47,6 +47,13 @@ io.sockets.on('connection', function (socket, pseudo) {
 
     socket.on('action', function (message) {
 
+      if(message == "veifyconnection"){
+        console.log(message);
+        console.log("T'est bien la l'admin ! ")
+        
+
+      }
+
       if(message == "allumerd"){
         console.log(message);
         LedD=true;
